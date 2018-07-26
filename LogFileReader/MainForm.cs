@@ -24,11 +24,6 @@ namespace LogFileEater
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            // Load defaults
-        }
-
         private void MainForm_Shown(object sender, EventArgs e)
         {
             defaultName = ActiveForm.Text;
@@ -39,27 +34,13 @@ namespace LogFileEater
 
             Invoke(new Action(() =>
             {
-                if (cbxAddNewLine.Checked)
-                {
-                    txtOutput.AppendText(e.Data + Environment.NewLine);
-                }
-                else
-                {
-                    txtOutput.AppendText(e.Data);
-                }
+                txtOutput.AppendText(e.Data + Environment.NewLine);
 
                 foreach (TabPage page in tbcLogFileRenders.TabPages)
                 {
                     if (page.Text == logFile)
                     {
-                        if (cbxAddNewLine.Checked)
-                        {
-                            ((TextBox)page.Controls.Find("txtOutput", false).First()).AppendText(e.Data + Environment.NewLine);
-                        }
-                        else
-                        {
-                            ((TextBox)page.Controls.Find("txtOutput", false).First()).AppendText(e.Data);
-                        }
+                        ((TextBox)page.Controls.Find("txtOutput", false).First()).AppendText(e.Data + Environment.NewLine);
                         return;
                     }
                 }
@@ -79,7 +60,7 @@ namespace LogFileEater
                 string[] files = ofdLogFileSelector.FileNames;
                 foreach (string file in files)
                 {
-                    readers.Add(new LogReader(RemoteOutputReceived, addPage, file));
+                    readers.Add(new LogReader(RemoteOutputReceived, AddPage, file));
                 }
             }
         }
@@ -117,7 +98,7 @@ namespace LogFileEater
             }
         }
 
-        public void addPage(string logFile)
+        public void AddPage(string logFile)
         {
             Invoke(new Action(() =>
             {
@@ -130,6 +111,9 @@ namespace LogFileEater
                 tb.Multiline = true;
                 tb.ReadOnly = true;
                 tb.ScrollBars = ScrollBars.Both;
+                tb.ForeColor = txtOutput.ForeColor;
+                tb.BackColor = txtOutput.BackColor;
+                tb.Font = txtOutput.Font;
 
                 tb.VisibleChanged += (sender, e) =>
                 {

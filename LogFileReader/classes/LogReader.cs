@@ -45,7 +45,7 @@ namespace LogFileEater.Classes
             psi.FileName = powerShellExe;
             psi.RedirectStandardError = true;
             psi.RedirectStandardOutput = true;
-            psi.Arguments = "Get-Content " + LogFile + " -Wait";
+            psi.Arguments = $"Get-Content {LogFile} -Wait";
             psi.UseShellExecute = false;
 
             p = new Process();
