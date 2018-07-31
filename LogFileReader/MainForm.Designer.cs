@@ -1,4 +1,4 @@
-﻿namespace LogFileEater
+﻿namespace LogFileReader
 {
     partial class MainForm
     {
@@ -105,13 +105,12 @@
             // 
             // btnHelp
             // 
-            this.btnHelp.Location = new System.Drawing.Point(774, 5);
+            this.btnHelp.Location = new System.Drawing.Point(7, 413);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 23);
             this.btnHelp.TabIndex = 1;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Visible = false;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // MainForm

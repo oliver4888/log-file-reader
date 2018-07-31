@@ -9,10 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LogFileEater.Classes;
+using LogFileReader.Classes;
 using Microsoft.VisualBasic;
 
-namespace LogFileEater
+namespace LogFileReader
 {
     public partial class MainForm : Form
     {
